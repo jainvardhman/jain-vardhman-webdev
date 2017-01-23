@@ -4,4 +4,62 @@ input.form-control {
 
 body {
     padding-top: 36px;
+    background-image: url("../images/white_brick_wall.png") ;
+}
+
+.top-bottom-margin{
+    margin-bottom: 4px;
+}
+
+.form-content{
+    background-color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 2px;
+    border-radius: 2px;
+    border-color: darkgray;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.container-center{
+    margin-top: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+.form-header{
+    text-align: center;
+    background-color: darkorange;
+    border-radius: 2px;
+}
+
+.form-header-text{
+    color: black;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+}
+
+.label-fixed-width{
+    text-align: center;
+    width: 25%;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.action-glyph{
+    font-size: 90%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+}
+
+textarea{
+    resize: vertical;
 }

@@ -7,18 +7,34 @@
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="container">
-        <h1>Login</h1>
-        <input type="text"
-               class="form-control"
-               placeholder="username"/>
-        <input type="password"
-               class="form-control"
-               placeholder="password"/>
-        <a class="btn btn-primary btn-block"
-           href="profile.html">Login</a>
-        <a class="btn btn-success btn-block"
-           href="register.html">Register</a>
+    <div class="container-center">
+        <div class="form-header form-header-text">Login</div>
+        <div class="form-content">
+            <div class="input-group top-bottom-margin">
+                <span class="input-group-addon"
+                      id="username-group">
+                     <span class=" glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text"
+                       class="form-control"
+                       placeholder="username"/>
+            </div>
+
+            <div class="input-group top-bottom-margin">
+                <span class="input-group-addon"
+                      id="password-group">
+                    <span class=" glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="password"
+                       class="form-control"
+                       placeholder="password"/>
+            </div>
+
+            <a class="btn btn-primary btn-block"
+               href="profile.html">Login</a>
+            <a class="btn btn-success btn-block"
+               href="register.html">Register</a>
+        </div>
     </div>
 </body>
 </html>

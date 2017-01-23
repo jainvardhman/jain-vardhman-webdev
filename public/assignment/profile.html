@@ -8,77 +8,91 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top form-header">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                Fixed Top
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
-          <span class="glyphicon glyphicon-plus">
-          </span>
-                </a>
-            </p>
+        <div class="row">
+            <div class="col-xs-3 text-center pull-left navbar-text">
+                    <a class="form-header-text pull-left" href="#">
+                        Profile
+                    </a>
+            </div>
+
+            <div class="col-xs-3 navbar-text pull-right text-right">
+                    <a href="profile.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok action-glyph">
+                        </span>
+                    </a>
+            </div>
         </div>
     </div>
 </nav>
 
 
-    <div class="container">
-        <h1>Profile</h1>
+<div class="container-center">
+    <div class="form-content">
+        <div class="input-group top-bottom-margin full-width">
+                <span class="input-group-addon label-fixed-width"
+                      id="username-group">
+                     Username
+                </span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="username"
+                   id ="username"/>
+        </div>
 
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
-            </div>
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="Alice">
-            </div>
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
-            </div>
-        </form>
+        <div class="input-group top-bottom-margin full-width">
+                <span class="input-group-addon label-fixed-width"
+                      id="email-group">
+                     Email Add
+                </span>
+            <input type="email"
+                   class="form-control"
+                   placeholder="alice@wonderland.com"
+                   id="email"/>
+        </div>
 
+        <div class="input-group top-bottom-margin full-width">
+                <span class="input-group-addon label-fixed-width"
+                      id="first-name-group">
+                     First Name
+                </span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Alice"
+                   id="first-name"/>
+        </div>
+
+        <div class="input-group top-bottom-margin full-width">
+                <span class="input-group-addon label-fixed-width"
+                      id="last-name-group">
+                     Last Name
+                </span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Wonderland"
+                   placeholder="Wonderland"
+                   id="last-name"/>
+        </div>
         <a class="btn btn-primary btn-block"
            href="website-list.html">Websites</a>
         <a class="btn btn-danger  btn-block"
            href="login.html">Logout</a>
     </div>
+</div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
-            <div class="col-xs-3 text-center">
+<nav class="navbar navbar-default navbar-fixed-bottom form-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 navbar-text pull-right text-right">
                 <a href="#">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </a>
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </a>
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-star"></span>
-                </a>
-            </div>
-            <div class="col-xs-3 text-center">
-                <a href="#">
-                    <span class="glyphicon glyphicon-heart"></span>
+                    <span class="glyphicon glyphicon-user action-glyph"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
+
 
 </body>
 </html>
