@@ -11,88 +11,111 @@
 <nav class="navbar navbar-default navbar-fixed-top webdev-form-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-3 text-center pull-left navbar-text">
-                    <a class="webdev-form-header-text pull-left" href="#">
-                        Profile
-                    </a>
+            <div class="col-xs-0 col-sm-0 col-md-0 text-left pull-left navbar-text">
+                <a href="widget-list.html">
+                        <span class="glyphicon glyphicon-chevron-left webdev-action-glyph">
+                        </span>
+                </a>
             </div>
 
-            <div class="col-xs-3 navbar-text pull-right text-right">
-                    <a href="profile.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-ok webdev-action-glyph">
-                        </span>
-                    </a>
+            <div class="col-xs-3 col-sm-3 col-md-3 text-left pull-left navbar-text">
+                <a class="webdev-form-header-text" href="#">
+                    Widget Edit
+                </a>
             </div>
+
+            <div class="col-xs-1 col-sm-1 col-md-1 navbar-text pull-right text-right">
+                <a href="widget-list.html">
+                <span class="glyphicon glyphicon-ok webdev-action-glyph">
+                </span>
+                </a>
+            </div>
+
         </div>
     </div>
 </nav>
+
 
 
 <div class="webdev-container-center">
     <div class="webdev-form-content">
         <div class="input-group webdev-top-bottom-margin webdev-full-width">
                 <span class="input-group-addon webdev-label-fixed-width"
-                      id="username-group">
-                     Username
+                      id="name-group">
+                     Name
                 </span>
             <input type="text"
                    class="form-control"
-                   placeholder="username"
-                   id ="username"/>
+                   placeholder="Name"
+                   id ="name"/>
         </div>
 
         <div class="input-group webdev-top-bottom-margin webdev-full-width">
                 <span class="input-group-addon webdev-label-fixed-width"
-                      id="email-group">
-                     Email Add
+                      id="text-group">
+                     Text
                 </span>
             <input type="email"
                    class="form-control"
-                   placeholder="alice@wonderland.com"
-                   id="email"/>
+                   placeholder="Text"
+                   id="text"/>
         </div>
 
         <div class="input-group webdev-top-bottom-margin webdev-full-width">
                 <span class="input-group-addon webdev-label-fixed-width"
-                      id="first-name-group">
-                     First Name
+                      id="url-group">
+                     URL
                 </span>
             <input type="text"
                    class="form-control"
-                   placeholder="Alice"
-                   id="first-name"/>
+                   placeholder="URL"
+                   id="url"/>
+        </div>
+
+
+        <div class="input-group webdev-top-bottom-margin webdev-full-width">
+                <span class="input-group-addon webdev-label-fixed-width"
+                      id="width-group">
+                     Width
+                </span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="## %"
+                   id="width"/>
         </div>
 
         <div class="input-group webdev-top-bottom-margin webdev-full-width">
                 <span class="input-group-addon webdev-label-fixed-width"
-                      id="last-name-group">
-                     Last Name
+                      id="file-upload-group">
+                     Upload
                 </span>
-            <input type="text"
+            <input type="file"
                    class="form-control"
-                   placeholder="Wonderland"
-                   placeholder="Wonderland"
-                   id="last-name"/>
+                   placeholder="No file chosen"
+                   id="file-upload"/>
         </div>
-        <a class="btn btn-primary btn-block"
-           href="website-list.html">Websites</a>
+
+        <a class="btn btn-primary  btn-block"
+           href="widget-list.html">Upload Image</a>
+
         <a class="btn btn-danger  btn-block"
-           href="login.html">Logout</a>
+           href="widget-list.html">Delete</a>
     </div>
 </div>
+
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom webdev-form-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 navbar-text pull-right text-right">
-                <a href="#">
+                <a href="profile.html">
                     <span class="glyphicon glyphicon-user webdev-action-glyph"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-
 
 </body>
 </html>

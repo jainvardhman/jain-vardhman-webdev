@@ -7,11 +7,11 @@ body {
     background-image: url("../images/white_brick_wall.png") ;
 }
 
-.top-bottom-margin{
+.webdev-top-bottom-margin{
     margin-bottom: 4px;
 }
 
-.form-content{
+.webdev-form-content{
     background-color: white;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -24,36 +24,36 @@ body {
     border-style: solid;
 }
 
-.container-center{
+.webdev-container-center{
     margin-top: 60px;
     margin-left: 5%;
     margin-right: 5%;
     width: 90%;
 }
 
-.form-header{
+.webdev-form-header{
     text-align: center;
     background-color: darkorange;
     border-radius: 2px;
 }
 
-.form-header-text{
+.webdev-form-header-text{
     color: black;
     font-size: 18px;
     color: black;
     text-align: center;
 }
 
-.label-fixed-width{
+.webdev-label-fixed-width{
     text-align: center;
     width: 25%;
 }
 
-.full-width{
+.webdev-full-width{
     width: 100%;
 }
 
-.action-glyph{
+.webdev-action-glyph{
     font-size: 90%;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -62,4 +62,14 @@ body {
 
 textarea{
     resize: vertical;
+}
+
+.jga-toolbar {
+    position: absolute;
+    right: 15px;
+    background-color: peachpuff;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.7;
 }

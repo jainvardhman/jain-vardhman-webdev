@@ -8,39 +8,39 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top form-header">
+<nav class="navbar navbar-default navbar-fixed-top webdev-form-header">
     <div class="container-fluid">
         <div class="row">
 
             <div class="col-xs-1 col-sm-1 col-md-1 text-left pull-left navbar-text">
                 <a href="website-list.html">
-                        <span class="glyphicon glyphicon-chevron-left action-glyph">
+                        <span class="glyphicon glyphicon-chevron-left webdev-action-glyph">
                         </span>
                 </a>
             </div>
 
             <div class="col-xs-2 colsm-2 col-md-2 text-left pull-left navbar-text hidden-xs clearfix">
-                <a class="form-header-text" href="#">
+                <a class="webdev-form-header-text" href="#">
                     Websites
                 </a>
             </div>
 
             <div class="col-xs-1 col-sm-0 col-md-1 navbar-text text-right hidden-xs clearfix">
                 <a href="website-new.html">
-                        <span class="glyphicon glyphicon-plus action-glyph">
+                        <span class="glyphicon glyphicon-plus webdev-action-glyph">
                         </span>
                 </a>
             </div>
 
             <div class="col-xs-5 col-sm-4 col-md-5 text-left pull-left navbar-text">
-                <a href="website-new.html" class="form-header-text">
+                <a href="website-new.html" class="webdev-form-header-text">
                     New Website
                 </a>
             </div>
 
             <div class="col-xs-1 col-sm-1 col-md-1 navbar-text pull-right text-right">
                 <a href="website-list.html">
-                <span class="glyphicon glyphicon-ok action-glyph">
+                <span class="glyphicon glyphicon-ok webdev-action-glyph">
                 </span>
                 </a>
             </div>
@@ -48,11 +48,11 @@
     </div>
 </nav>
 
-<div class="row">
-
-    <div class="col-xs-0 col-sm-5 col-md-5 pull-left visible-sm-* visible-md-* visible-lg-* hidden-xs clearfix">
-        <div class="container-center">
-            <div class="form-content">
+<div class="webdev-container-center">
+    <div class="webdev-form-content">
+        <div class="row container-fluid">
+            <div class="col-xs-0 col-sm-4 col-md-4 pull-left visible-sm-* visible-md-* visible-lg-* hidden-xs clearfix"
+            style="overflow: auto; max-height: 100%">
                 <ul class="list-group">
                     <li class="list-group-item row">
                         <a href="page-list.html">
@@ -63,7 +63,7 @@
 
                         <div class="col-xs-1 col-sm-1 col-md-1 text-right pull-right">
                             <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog action-glyph">
+                        <span class="glyphicon glyphicon-cog webdev-action-glyph">
                         </span>
                             </a>
                         </div>
@@ -78,7 +78,7 @@
 
                         <div class="col-xs-1 col-sm-1 col-md-1 text-right pull-right">
                             <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog action-glyph">
+                        <span class="glyphicon glyphicon-cog webdev-action-glyph">
                         </span>
                             </a>
                         </div>
@@ -93,7 +93,7 @@
 
                         <div class="col-xs-1 col-sm-1 col-md-1 text-right pull-right">
                             <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog action-glyph">
+                        <span class="glyphicon glyphicon-cog webdev-action-glyph">
                         </span>
                             </a>
                         </div>
@@ -108,21 +108,17 @@
 
                         <div class="col-xs-1 col-sm-1 col-md-1 text-right pull-right">
                             <a href="website-edit.html">
-                        <span class="glyphicon glyphicon-cog action-glyph">
+                        <span class="glyphicon glyphicon-cog webdev-action-glyph">
                         </span>
                             </a>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
-    </div>
 
-    <div class="col-xs-12 col-sm-7 col-md-7 pull-left">
-        <div class="container-center">
-            <div class="form-content">
-                <div class="input-group top-bottom-margin full-width">
-                    <span class="input-group-addon label-fixed-width"
+            <div class="col-xs-12 col-sm-8 col-md-8 pull-left" style="overflow: auto">
+                <div class="input-group webdev-top-bottom-margin webdev-full-width">
+                    <span class="input-group-addon webdev-label-fixed-width"
                           id="websitename-group">
                         Name
                     </span>
@@ -131,24 +127,24 @@
                            placeholder="Website Name"
                            id ="websitename"/>
                 </div>
-                <div class="input-group top-bottom-margin full-width">
-            <span class="input-group-addon label-fixed-width"
+                <div class="input-group webdev-top-bottom-margin webdev-full-width">
+            <span class="input-group-addon webdev-label-fixed-width"
                   id="websitedesc-group">
                  Description
             </span>
-                    <textarea class="form-control full-width"
+                    <textarea class="form-control webdev-full-width"
                               placeholder="Website Description"
                               rows="3"
                               id="websitedesc"></textarea>
                 </div>
             </div>
+
         </div>
     </div>
-
 </div>
 
 <nav class="navbar navbar-default
-            navbar-fixed-bottom form-header">
+            navbar-fixed-bottom webdev-form-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 navbar-text
@@ -156,7 +152,7 @@
                 <a href="profile.html">
                     <span class="glyphicon
                                  glyphicon-user
-                                 action-glyph"></span>
+                                 webdev-action-glyph"></span>
                 </a>
             </div>
         </div>
