@@ -1,0 +1,110 @@
+<nav class="navbar navbar-default navbar-fixed-top webdev-form-header">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-xs-1 col-sm-1 col-md-1 text-left pull-left navbar-text">
+                <a ng-click="model.websiteList()">
+                        <span class="glyphicon glyphicon-chevron-left webdev-action-glyph">
+                        </span>
+                </a>
+            </div>
+
+            <div class="col-xs-2 colsm-2 col-md-2 text-left pull-left navbar-text hidden-xs clearfix">
+                <a class="webdev-form-header-text" href="#">
+                    Websites
+                </a>
+            </div>
+
+            <div class="col-xs-1 col-sm-0 col-md-1 navbar-text text-right hidden-xs clearfix">
+                <a ng-click="model.add()">
+                        <span class="glyphicon glyphicon-plus webdev-action-glyph">
+                        </span>
+                </a>
+            </div>
+
+            <div class="col-xs-5 col-sm-4 col-md-5 text-left pull-left navbar-text">
+                <a ng-click="model.add()" class="webdev-form-header-text">
+                    Edit Website
+                </a>
+            </div>
+
+            <div class="col-xs-1 col-sm-1 col-md-1 navbar-text pull-right text-right">
+                <a ng-click="model.updateWebsite(model.website)">
+                <span class="glyphicon glyphicon-ok webdev-action-glyph">
+                </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="webdev-container-center">
+    <div class="webdev-form-content">
+        <div class="row container-fluid">
+
+            <div class="col-xs-0 col-sm-4 col-md-4 pull-left visible-sm-* visible-md-* visible-lg-* hidden-xs clearfix">
+                <ul class="list-group">
+                    <li ng-repeat="website in model.websites" class="list-group-item row">
+                        <a ng-click="model.pageList(website._id)">
+                            <div class="col-xs-10 col-md-sm-10 col-md-10 text-left pull-left">
+                                {{website.name}}
+                            </div>
+                        </a>
+
+                        <div class="col-xs-1 col-sm-1 col-md-1 text-right pull-right">
+                            <a ng-click="model.edit(website._id)">
+                        <span class="glyphicon glyphicon-cog webdev-action-glyph">
+                        </span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-8 col-md-8 pull-left">
+                <div class="input-group webdev-top-bottom-margin webdev-full-width">
+                    <span class="input-group-addon webdev-label-fixed-width"
+                          id="websitename-group">
+                        Name
+                    </span>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Website Name"
+                           id ="websitename"
+                           ng-model="model.website.name"/>
+                </div>
+                <div class="input-group webdev-top-bottom-margin webdev-full-width">
+            <span class="input-group-addon webdev-label-fixed-width"
+                  id="websitedesc-group">
+                 Description
+            </span>
+                    <textarea class="form-control webdev-full-width"
+                              placeholder="Website Description"
+                              rows="3"
+                              id="websitedesc"
+                              ng-model="model.website.description"></textarea>
+                </div>
+                <a class="btn btn-danger  btn-block"
+                   ng-click="model.deleteWebsite()">Delete</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default
+            navbar-fixed-bottom webdev-form-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 navbar-text
+                        pull-right text-right">
+                <a ng-click="model.profile()">
+                    <span class="glyphicon
+                                 glyphicon-user
+                                 webdev-action-glyph"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

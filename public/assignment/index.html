@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!--controllers-->
+    <script src="controllers/user/login.controller.client.js"></script>
+    <script src="controllers/user/profile.controller.client.js"></script>
+    <script src="controllers/user/register.controller.client.js"></script>
+    <script src="controllers/website/website-list.controller.client.js"></script>
+    <script src="controllers/website/website-new.controller.client.js"></script>
+    <script src="controllers/website/website-edit.controller.client.js"></script>
+    <script src="controllers/page/page-list.controller.client.js"></script>
+    <script src="controllers/page/page-new.controller.client.js"></script>
+    <script src="controllers/page/page-edit.controller.client.js"></script>
+    <!--script src="controllers/widget/widget-list.controller.client.js"></script>
+    <script src="controllers/widget/widget-chooser.controller.client.js"></script>
+    <script src="controllers/widget/widget-heading.controller.client.js"></script>
+    <script src="controllers/widget/widget-image.controller.client.js"></script>
+    <script src="controllers/widget/widget-youtube.controller.client.js"></script-->
+
+    <!--services-->
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
     <meta charset="UTF-8">
     <title>Assignment Home Page</title>
 </head>
 <body>
-    <h1>Assignment Home Page</h1>
+    <div ng-view></div>
 </body>
 </html>

@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top webdev-form-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-0 col-sm-0 col-md-0 text-left pull-left navbar-text">
-                <a href="widget-list.html">
+                <a href="widget-list.view.client.html">
                         <span class="glyphicon glyphicon-chevron-left webdev-action-glyph">
                         </span>
                 </a>
@@ -25,7 +15,7 @@
             </div>
 
             <div class="col-xs-1 col-sm-1 col-md-1 navbar-text pull-right text-right">
-                <a href="widget-list.html">
+                <a href="widget-list.view.client.html">
                 <span class="glyphicon glyphicon-ok webdev-action-glyph">
                 </span>
                 </a>
@@ -83,8 +73,23 @@
                    placeholder="## %"
                    id="width"/>
         </div>
+
+        <div class="input-group webdev-top-bottom-margin webdev-full-width">
+                <span class="input-group-addon webdev-label-fixed-width"
+                      id="file-upload-group">
+                     Upload
+                </span>
+            <input type="file"
+                   class="form-control"
+                   placeholder="No file chosen"
+                   id="file-upload"/>
+        </div>
+
+        <a class="btn btn-primary  btn-block"
+           href="widget-list.view.client.html">Upload Image</a>
+
         <a class="btn btn-danger  btn-block"
-           href="widget-list.html">Delete</a>
+           href="widget-list.view.client.html">Delete</a>
     </div>
 </div>
 
@@ -94,13 +99,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 navbar-text pull-right text-right">
-                <a href="profile.html">
+                <a href="../user/profile.view.client.html">
                     <span class="glyphicon glyphicon-user webdev-action-glyph"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-
-</body>
-</html>

@@ -1,0 +1,64 @@
+<nav class="navbar navbar-default navbar-fixed-top webdev-form-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-0 col-sm-0 col-md-0 text-left pull-left navbar-text">
+                <a ng-click="model.profile()">
+                        <span class="glyphicon glyphicon-chevron-left webdev-action-glyph">
+                        </span>
+                </a>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 text-left pull-left navbar-text">
+                <a class="webdev-form-header-text" href="#">
+                    Websites
+                </a>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 navbar-text pull-right text-right">
+                <a ng-click="model.add()">
+                        <span class="glyphicon glyphicon-plus webdev-action-glyph">
+                        </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="webdev-container-center">
+    <div class="webdev-form-content">
+        <ul class="list-group">
+
+            <li ng-repeat="website in model.websites" class="list-group-item row">
+                <a ng-click="model.pageList(website._id)">
+                    <div class="col-xs-10 col-md-sm-10 col-md-10 text-left pull-left">
+                        {{website.name}}
+                    </div>
+                </a>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right pull-right">
+                    <a ng-click="model.edit(website._id)">
+                        <span class="glyphicon glyphicon-cog webdev-action-glyph">
+                        </span>
+                    </a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom webdev-form-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 navbar-text pull-right text-right">
+                <a ng-click="model.profile()">
+                    <span class="glyphicon glyphicon-user webdev-action-glyph"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
