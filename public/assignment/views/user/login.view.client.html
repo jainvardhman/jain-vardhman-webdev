@@ -1,6 +1,9 @@
     <div class="webdev-container-center">
         <div class="webdev-form-header webdev-form-header-text">Login</div>
         <div class="webdev-form-content">
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
             <div class="input-group webdev-top-bottom-margin">
                 <span class="input-group-addon"
                       id="username-group">

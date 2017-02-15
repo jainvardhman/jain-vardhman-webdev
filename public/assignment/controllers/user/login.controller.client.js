@@ -9,8 +9,12 @@
 
     function loginController(UserService,$location){
         var vm = this;
-        vm.login = login;
-        vm.register = navRegister;
+
+        function init(){
+            vm.login = login;
+            vm.register = navRegister;
+        }
+        init();
 
         function login(user){
             var loginUser = UserService.findUserByCredentials(user.username, user.password);

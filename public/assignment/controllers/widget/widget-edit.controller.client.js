@@ -9,19 +9,19 @@
 
     function widgetEditController($routeParams,WidgetService,$location){
         var vm = this;
-        vm.developerId = $routeParams['uid'];
-        vm.websiteId = $routeParams['wid'];
-        vm.pageid = $routeParams['pid'];
-        vm.widgetId = $routeParams['wgid'];
-        vm.widgets = WidgetService.findWidgetsByPageId(vm.pageid);
-        vm.updateWidget = updateWidget;
-        vm.deleteWidget = deleteWidget;
-        vm.getEditorTemplateUrl = getEditorTemplateUrl;
-        vm.profile = navProfile;
-        vm.widgetList = navWidgets;
-        vm.widgetChooser = navWidgetChoose;
 
         function init() {
+            vm.developerId = $routeParams['uid'];
+            vm.websiteId = $routeParams['wid'];
+            vm.pageid = $routeParams['pid'];
+            vm.widgetId = $routeParams['wgid'];
+            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageid);
+            vm.updateWidget = updateWidget;
+            vm.deleteWidget = deleteWidget;
+            vm.getEditorTemplateUrl = getEditorTemplateUrl;
+            vm.profile = navProfile;
+            vm.widgetList = navWidgets;
+            vm.widgetChooser = navWidgetChoose;
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
         }
         init();

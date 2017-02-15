@@ -62,6 +62,9 @@
             </div>
 
             <div class="col-xs-12 col-sm-8 col-md-8 pull-left">
+                <div ng-show="model.error" class="alert alert-danger" role="alert">
+                    {{model.error}}
+                </div>
                 <div class="input-group webdev-top-bottom-margin webdev-full-width">
                     <span class="input-group-addon webdev-label-fixed-width"
                           id="websitename-group">

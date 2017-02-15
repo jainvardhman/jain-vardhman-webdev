@@ -27,6 +27,9 @@
 
 <div class="webdev-container-center">
     <div class="webdev-form-content">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
         <ng-include src="model.getEditorTemplateUrl(model.widget.widgetType)"></ng-include>
         <a class="btn btn-danger  btn-block"
            ng-click="model.deleteWidget()">Delete</a>
@@ -37,7 +40,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 navbar-text pull-right text-right">
-                <a href="model.profile()">
+                <a ng-click="model.profile()">
                     <span class="glyphicon glyphicon-user webdev-action-glyph"></span>
                 </a>
             </div>

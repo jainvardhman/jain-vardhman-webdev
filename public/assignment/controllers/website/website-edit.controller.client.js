@@ -9,17 +9,18 @@
 
     function websiteEditController($routeParams,WebsiteService,$location){
         var vm = this;
-        vm.developerId = $routeParams['uid'];
-        vm.websiteId = $routeParams['wid'];
-        vm.updateWebsite = updateWebsite;
-        vm.deleteWebsite = deleteWebsite;
-        vm.edit = navWebsiteEdit;
-        vm.add = navWebsiteNew;
-        vm.profile = navProfile;
-        vm.websiteList = navWebsites;
-        vm.pageList = navPages;
+
 
         function init(){
+            vm.developerId = $routeParams['uid'];
+            vm.websiteId = $routeParams['wid'];
+            vm.updateWebsite = updateWebsite;
+            vm.deleteWebsite = deleteWebsite;
+            vm.edit = navWebsiteEdit;
+            vm.add = navWebsiteNew;
+            vm.profile = navProfile;
+            vm.websiteList = navWebsites;
+            vm.pageList = navPages;
             vm.websites = WebsiteService.findWebsitesByUser(vm.developerId);
             vm.website = WebsiteService.findWebsiteById(vm.websiteId);
         }

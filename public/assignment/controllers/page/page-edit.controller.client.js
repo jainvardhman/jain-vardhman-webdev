@@ -9,17 +9,18 @@
 
     function pageEditController($routeParams,PageService,$location){
         var vm = this;
-        vm.developerId = $routeParams['uid'];
-        vm.websiteId = $routeParams['wid'];
-        vm.pageId = $routeParams['pid'];
-        vm.updatePage = updatePage;
-        vm.deletePage = deletePage;
-        vm.edit = navPageEdit;
-        vm.add = navPageNew;
-        vm.profile = navProfile;
-        vm.pageList = navPages;
+
 
         function init(){
+            vm.developerId = $routeParams['uid'];
+            vm.websiteId = $routeParams['wid'];
+            vm.pageId = $routeParams['pid'];
+            vm.updatePage = updatePage;
+            vm.deletePage = deletePage;
+            vm.edit = navPageEdit;
+            vm.add = navPageNew;
+            vm.profile = navProfile;
+            vm.pageList = navPages;
             vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
             vm.page = PageService.findPageById(vm.pageId);
         }

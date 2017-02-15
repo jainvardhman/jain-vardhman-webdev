@@ -9,17 +9,24 @@
 
     function widgetListController($sce,$routeParams,WidgetService,$location){
         var vm = this;
-        vm.developerId = $routeParams['uid'];
-        vm.websiteId = $routeParams['wid'];
-        vm.pageid = $routeParams['pid'];
-        vm.widgets = WidgetService.findWidgetsByPageId(vm.pageid);
-        vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-        vm.getTrustedHtml = getTrustedHtml;
-        vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
-        vm.profile = navProfile;
-        vm.pageList = navPages;
-        vm.widgetNew = navWidgetNew;
-        vm.edit = navWidgetEdit;
+
+
+        function init(){
+            vm.developerId = $routeParams['uid'];
+            vm.websiteId = $routeParams['wid'];
+            vm.pageid = $routeParams['pid'];
+            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageid);
+            vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+            vm.getTrustedHtml = getTrustedHtml;
+            vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
+            vm.profile = navProfile;
+            vm.pageList = navPages;
+            vm.widgetNew = navWidgetNew;
+            vm.edit = navWidgetEdit;
+        }
+
+        init();
+
         function getWidgetTemplateUrl(widgetType) {
             var url = 'views/widget/widget-'+widgetType+'.view.client.html';
             return url;

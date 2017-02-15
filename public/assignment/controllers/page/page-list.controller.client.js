@@ -9,14 +9,19 @@
 
     function pageListController($routeParams,PageService,$location){
         var vm = this;
-        vm.developerId = $routeParams['uid'];
-        vm.websiteId = $routeParams['wid'];
-        vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
-        vm.add = navPageNew;
-        vm.edit = navPageEdit;
-        vm.profile = navProfile;
-        vm.websiteList = navWebsites;
-        vm.widgets = navWidgets;
+
+
+        function init(){
+            vm.developerId = $routeParams['uid'];
+            vm.websiteId = $routeParams['wid'];
+            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+            vm.add = navPageNew;
+            vm.edit = navPageEdit;
+            vm.profile = navProfile;
+            vm.websiteList = navWebsites;
+            vm.widgets = navWidgets;
+        }
+        init();
 
         function navWebsites(){
             $location.url('/user/' + vm.developerId + '/website');

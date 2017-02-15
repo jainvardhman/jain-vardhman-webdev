@@ -9,13 +9,14 @@
 
     function websiteListController($routeParams,WebsiteService,$location){
         var vm = this;
-        vm.developerId = $routeParams['uid'];
-        vm.add = navWebsiteNew;
-        vm.edit = navWebsiteEdit;
-        vm.profile = navProfile;
-        vm.pageList = navPages;
+
 
         function init(){
+            vm.developerId = $routeParams['uid'];
+            vm.add = navWebsiteNew;
+            vm.edit = navWebsiteEdit;
+            vm.profile = navProfile;
+            vm.pageList = navPages;
             vm.websites = WebsiteService.findWebsitesByUser(vm.developerId);
         }
         init();
