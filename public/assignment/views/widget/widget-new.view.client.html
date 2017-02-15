@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default navbar-fixed-top webdev-form-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-0 col-sm-0 col-md-0 text-left pull-left navbar-text">
+                <a ng-click="model.widgetList()">
+                        <span class="glyphicon glyphicon-chevron-left webdev-action-glyph">
+                        </span>
+                </a>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 text-left pull-left navbar-text">
+                <a class="webdev-form-header-text" ng-click="model.widgetNew()">
+                    Choose Widget
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="webdev-container-center">
+    <div class="webdev-form-content">
+        <ul class="list-group">
+            <li ng-repeat ="widgetType in model.widgetTypes" class="list-group-item row">
+                <a ng-click="model.createWidget(widgetType.type)">
+                    {{widgetType.text}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom webdev-form-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 navbar-text pull-right text-right">
+                <a ng-click="model.profile()">
+                    <span class="glyphicon glyphicon-user webdev-action-glyph"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

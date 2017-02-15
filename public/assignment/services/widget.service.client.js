@@ -19,45 +19,64 @@
             { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
         ];
 
+        widgetTypes = [
+            {"type":"HEADER", "text": "Header"},
+            {"type":"LABEL", "text": "Label"},
+            {"type":"HTML", "text": "HTML"},
+            {"type":"TEXT", "text": "Text Input"},
+            {"type":"LINK", "text": "Link"},
+            {"type":"BUTTON", "text": "Button"},
+            {"type":"IMAGE", "text": "Image"},
+            {"type":"YOUTUBE", "text": "YouTube"},
+            {"type":"TABLE", "text": "Data Table"},
+            {"type":"REPEATER", "text": "Repeater"}
+        ];
+
+
+
         var api = {
             "createWidget": createWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "getAllWidgetTypes" : getAllWidgetTypes
         };
         return api;
 
         function createWidget(pageId,widget){
-            getNewWidgetByWidgetType(pageId,widget)
             var newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                "pageId": pageId, "text": widget.text};
+                "pageId": pageId};
             widgets.push(newWidget);
+            return angular.copy(newWidget);
         }
 
-        function getNewWidgetByWidgetType(pageId,widget){
-            var newWidget;
-            if(widget.widgetType === "HEADER"){
-                newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                    "pageId": pageId, "text": widget.text, "size": widget.size};
-            } else if(widget.widgetType === "IMAGE"){
-                newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                    "pageId": pageId, "width": widget.width, "url": widget.url};
+        function getNewWidgetByWidgetType(pageId,widgetOld,widgetNew){
+            if(widgetOld.widgetType === "HEADER"){
+                widgetOld.text = widgetNew.text;
+                widgetOld.size = widgetNew.size;
+            } else if(widgetOld.widgetType === "IMAGE"){
+                widgetOld.width = widgetNew.width;
+                widgetOld.url = widgetNew.url;
+            } else if(widgetOld.widgetType === "HTML"){
+                widgetOld.text = widgetNew.text;
 
-            } else if(widget.widgetType === "HTML"){
-                newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                    "pageId": pageId, "text": widget.text};
-
-            } else if(widget.widgetType === "YOUTUBE"){
-                newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                    "pageId": pageId, "width": widget.width, "url": widget.url};
+            } else if(widgetOld.widgetType === "YOUTUBE"){
+                widgetOld.width = widgetNew.width;
+                widgetOld.url = widgetNew.url;
 
             } else {
-                newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                    "pageId": pageId, "text": widget.text};
+                widgetOld.text = widgetNew.text;
             }
+        }
 
-            return newWidget;
+        function getAllWidgetTypes(){
+            var retWidgetTypes = [];
+            for(wgs in widgetTypes){
+                var widgetType = widgetTypes[wgs];
+                retWidgetTypes.push(angular.copy(widgetType));
+            }
+            return retWidgetTypes;
         }
 
         function findWidgetsByPageId(pageId){
@@ -88,7 +107,7 @@
                     newWidget._id = widget._id;
                     newWidget.pageId = widget.pageId;
                     newWidget.widgetType = widget.widgetType;
-                    widget = getNewWidgetByWidgetType(widget.pageId,newWidget);
+                    getNewWidgetByWidgetType(widget.pageId,widget,newWidget);
                     return angular.copy(widget);
                 }
             }
@@ -96,12 +115,17 @@
         }
 
         function deleteWidget(widgetId){
-            for(wgs in widgets){
-                var widget = widgets[wgs];
+            var wgIndex = -1;
+            for(wgts in widgets){
+                var widget = widgets[wgts];
                 if(widget._id === widgetId){
-                    widgets.pop(wgs);
-                    return {success : "true"};
+                    wgIndex = wgts;
+                    break;
                 }
+            }
+            if(wgIndex != -1){
+                widgets.splice(wgIndex,1);
+                return {success : "true"};
             }
             return {success : "false"};
         }

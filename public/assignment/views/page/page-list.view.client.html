@@ -30,7 +30,7 @@
     <div class="webdev-form-content">
         <ul class="list-group">
             <li ng-repeat="page in model.pages" class="list-group-item row">
-                <a href="#">
+                <a ng-click="model.widgets(page._id)">
                     <div class="col-xs-7 text-left pull-left">
                         {{page.name}}
                     </div>

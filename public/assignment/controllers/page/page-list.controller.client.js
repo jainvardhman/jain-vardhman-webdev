@@ -16,6 +16,7 @@
         vm.edit = navPageEdit;
         vm.profile = navProfile;
         vm.websiteList = navWebsites;
+        vm.widgets = navWidgets;
 
         function navWebsites(){
             $location.url('/user/' + vm.developerId + '/website');
@@ -31,6 +32,10 @@
 
         function navProfile(){
             $location.url('/user/' + vm.developerId);
+        }
+
+        function navWidgets(pageId){
+            $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + pageId + '/widget');
         }
     }
 
