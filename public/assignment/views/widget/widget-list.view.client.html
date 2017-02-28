@@ -27,7 +27,7 @@
 
 <div class="webdev-container-center">
     <div class="webdev-form-content">
-        <ul class="list-group">
+        <ul class="list-group" jga-sortable="" update-order="model.updateOrder(startIndex,endIndex)">
             <li class="list-group-item" ng-repeat="widget in model.widgets">
                 <div class="jga-toolbar">
                     <a ng-click="model.edit(widget._id)">

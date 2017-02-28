@@ -14,7 +14,14 @@
         function init(){
             vm.developerId = $routeParams['uid'];
             vm.websiteId = $routeParams['wid'];
-            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+            PageService.findPagesByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                    vm.pages = pages;
+                })
+                .error(function(err){
+                    vm.error = 'Pages could not be loaded';
+                });
+
             vm.add = navPageNew;
             vm.edit = navPageEdit;
             vm.profile = navProfile;

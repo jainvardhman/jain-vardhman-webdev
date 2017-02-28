@@ -17,18 +17,28 @@
             vm.websites = navWebsites;
             vm.logout = navLogin;
             vm.profile = navProfile;
-            vm.user = UserService.findUserById(vm.userId);
+
+            var promise = UserService.findUserById(vm.userId);
+            promise
+                .success(function(user){
+                    vm.user = user;
+                })
+                .error(function(err){
+                    vm.error = 'User not found';
+                });
         }
 
         init();
 
         function update(newUser){
-            var user = UserService.updateUser(vm.userId,newUser);
-            if(user == null){
-                vm.error = "User could not be updated";
-            } else{
-                vm.message = "User successfully updated";
-            }
+            var promise = UserService.updateUser(vm.userId,newUser);
+            promise
+                .success(function(user){
+                    vm.message = "User successfully updated";
+                })
+                .error(function(err){
+                    vm.error = "User could not be updated";
+                });
         }
 
         function navWebsites(){

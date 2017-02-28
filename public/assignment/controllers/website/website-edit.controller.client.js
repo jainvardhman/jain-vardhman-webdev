@@ -21,8 +21,20 @@
             vm.profile = navProfile;
             vm.websiteList = navWebsites;
             vm.pageList = navPages;
-            vm.websites = WebsiteService.findWebsitesByUser(vm.developerId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService.findWebsitesByUser(vm.developerId)
+                .success(function(websites){
+                    vm.websites = websites;
+                })
+                .error(function(err){
+                    vm.error = 'Error while loading websites';
+                });
+            WebsiteService.findWebsiteById(vm.websiteId)
+                .success(function(website){
+                    vm.website = website;
+                })
+                .error(function(err){
+                    vm.error = 'Error while loading website';
+                });
         }
         init();
 
@@ -39,20 +51,26 @@
         }
 
         function updateWebsite(website){
-            var newWebsite = WebsiteService.updateWebsite(vm.websiteId,website);
-            if(newWebsite == null)
-                vm.error = "Website could not be updated";
-            else
-                $location.url('/user/' + vm.developerId + '/website');
+            var promise = WebsiteService.updateWebsite(vm.websiteId,website);
+            promise
+                .success(function(newWebsite){
+                    $location.url('/user/' + vm.developerId + '/website');
+                })
+                .error(function(err){
+                    vm.error = "Website could not be updated";
+                });
         }
 
 
         function deleteWebsite(){
-            var status = WebsiteService.deleteWebsite(vm.websiteId);
-            if(status.success === "false")
-                vm.error = "Website could not be deleted";
-            else
-                $location.url('/user/' + vm.developerId + '/website');
+            var promise = WebsiteService.deleteWebsite(vm.websiteId);
+            promise
+                .success(function(success){
+                    $location.url('/user/' + vm.developerId + '/website');
+                })
+                .error(function(err){
+                    vm.error = "Website could not be deleted";
+                });
         }
 
         function navWebsiteEdit(websiteId){

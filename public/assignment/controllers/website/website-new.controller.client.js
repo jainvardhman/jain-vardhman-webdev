@@ -18,7 +18,13 @@
             vm.profile = navProfile;
             vm.websiteList = navWebsites;
             vm.pageList = navPages;
-            vm.websites = WebsiteService.findWebsitesByUser(vm.developerId);
+            WebsiteService.findWebsitesByUser(vm.developerId)
+                .success(function(websites){
+                    vm.websites = websites;
+                })
+                .error(function(err){
+                   vm.error = 'Error while loading websites';
+                });
         }
         init();
 
@@ -37,11 +43,13 @@
 
         function createWebsite(website){
             website._id = (new Date).getTime().toString();
-            var newWebsite = WebsiteService.createWebsite(vm.developerId,website);
-            if(newWebsite == null)
-                vm.error = "Website could not be created";
-            else
-                $location.url('/user/' + vm.developerId + '/website');
+            WebsiteService.createWebsite(vm.developerId,website)
+                .success(function(newWebsite){
+                    $location.url('/user/' + vm.developerId + '/website');
+                })
+                .error(function(err){
+                    vm.error = "Website could not be created";
+                });
         }
 
         function navWebsiteEdit(webisteId){

@@ -17,12 +17,19 @@
         init();
 
         function login(user){
-            var loginUser = UserService.findUserByCredentials(user.username, user.password);
-            if(loginUser != null){
-                $location.url('/user/' + loginUser._id);
-            } else{
-                vm.error = 'Invalid username or password';
-            }
+            var promise = UserService.findUserByCredentials(user.username, user.password);
+            promise
+                .success(function (user) {
+                    var loginUser = user;
+                    if(loginUser != null) {
+                        $location.url('/user/' + loginUser._id);
+                    } else {
+                        vm.error = 'Invalid username or password';
+                    }
+                })
+                .error(function(err){
+                    vm.error = err;
+                });
         }
 
         function navRegister(){

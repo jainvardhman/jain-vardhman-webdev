@@ -15,7 +15,13 @@
             vm.developerId = $routeParams['uid'];
             vm.websiteId = $routeParams['wid'];
             vm.pageid = $routeParams['pid'];
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageid);
+            WidgetService.findWidgetsByPageId(vm.pageid)
+                .success(function(widgets){
+                    vm.widgets = widgets;
+                })
+                .error(function(err){
+                    vm.error = 'Widgets could not be loaded';
+                });
             vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
             vm.getTrustedHtml = getTrustedHtml;
             vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
@@ -23,6 +29,7 @@
             vm.pageList = navPages;
             vm.widgetNew = navWidgetNew;
             vm.edit = navWidgetEdit;
+            vm.updateOrder = updateOrder;
         }
 
         init();
@@ -59,31 +66,16 @@
             $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + vm.pageid + "/widget/" + widgetId);
         }
 
-        /*vm.add = navPageNew;
-        vm.edit = navPageEdit;
-        vm.profile = navProfile;
-        vm.websiteList = navWebsites;
-        vm.widgets = navWidgets;
 
-        function navWebsites(){
-            $location.url('/user/' + vm.developerId + '/website');
+        function updateOrder(startIndex,endIndex){
+            WidgetService.updateWidgetsOrder(vm.pageid,startIndex,endIndex)
+                .success(function(status){
+                    vm.message = "Widgets order successfully updated";
+                })
+                .error(function(err){
+                    vm.error= "Widgets order could not be updated";
+                });
         }
-
-        function navPageNew(){
-            $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/new');
-        }
-
-        function navPageEdit(pageId){
-            $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + pageId);
-        }
-
-        function navProfile(){
-            $location.url('/user/' + vm.developerId);
-        }
-
-        function navWidgets(pageId){
-            $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + pageId + '/widget');
-        }*/
     }
 
 })();

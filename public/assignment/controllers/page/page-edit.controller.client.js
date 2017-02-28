@@ -21,8 +21,20 @@
             vm.add = navPageNew;
             vm.profile = navProfile;
             vm.pageList = navPages;
-            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
-            vm.page = PageService.findPageById(vm.pageId);
+            PageService.findPagesByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                    vm.pages = pages;
+                })
+                .error(function(err){
+                    vm.error = 'Pages could not be loaded';
+                });
+            PageService.findPageById(vm.pageId)
+                .success(function(page){
+                    vm.page = page;
+                })
+                .error(function(err){
+                    vm.error = 'Page could not be loaded';
+                });
         }
         init();
 
@@ -35,20 +47,24 @@
         }
 
         function updatePage(page){
-            var newPage = PageService.updatePage(vm.pageId,page);
-            if(newPage == null)
-                vm.error = "Page could not be updated";
-            else
-                $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');
+            PageService.updatePage(vm.pageId,page)
+                .success(function(page){
+                    $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');
+                })
+                .error(function(err){
+                    vm.error = "Page could not be updated";
+                });
         }
 
 
         function deletePage(){
-            var status = PageService.deletePage(vm.pageId);
-            if(status.success === "false")
-                vm.error = "Page could not be deleted";
-            else
-                $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');
+            PageService.deletePage(vm.pageId)
+                .success(function(newWebsite){
+                    $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');
+                })
+                .error(function(err){
+                    vm.error = "Page could not be deleted";
+                });
         }
 
         function navPageEdit(pageId){

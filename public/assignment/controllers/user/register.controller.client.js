@@ -19,12 +19,14 @@
 
         function register(newUser){
             newUser._id = (new Date).getTime.toString();
-            var user = UserService.createUser(newUser);
-            if(user == null){
-                vm.error = "User could not be created";
-            } else{
-                $location.url('/user/' + user._id);
-            }
+            var promise = UserService.createUser(newUser);
+            promise
+                .success(function(user){
+                    $location.url('/user/' + user._id);
+                })
+                .err(function(err){
+                    vm.error = "User could not be created";
+                });
         }
 
         function navLogin(){

@@ -7,7 +7,7 @@
         .module("WebAppMaker")
         .controller("WidgetEditController",widgetEditController);
 
-    function widgetEditController($routeParams,WidgetService,$location){
+    function widgetEditController($routeParams,WidgetService,$location,$http){
         var vm = this;
 
         function init() {
@@ -15,14 +15,28 @@
             vm.websiteId = $routeParams['wid'];
             vm.pageid = $routeParams['pid'];
             vm.widgetId = $routeParams['wgid'];
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageid);
+            WidgetService.findWidgetsByPageId(vm.pageid)
+                .success(function(widgets){
+                    vm.widgets = widgets;
+                })
+                .error(function(err){
+                    vm.error = 'Could not load widgets';
+                });
             vm.updateWidget = updateWidget;
             vm.deleteWidget = deleteWidget;
             vm.getEditorTemplateUrl = getEditorTemplateUrl;
             vm.profile = navProfile;
             vm.widgetList = navWidgets;
             vm.widgetChooser = navWidgetChoose;
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService.findWidgetById(vm.widgetId)
+                .success(function(widget){
+                    vm.widget = widget;
+                })
+                .error(function(err){
+                    vm.error = 'Could not load widget';
+                });
+
+            vm.upload = fileUpload;
         }
         init();
 
@@ -31,20 +45,24 @@
         }
 
         function updateWidget(widget){
-            var newWidget = WidgetService.updateWidget(vm.widgetId,widget);
-            if(newWidget == null)
-                vm.error = "Widget could not be updated";
-            else
-                $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + vm.pageid + '/widget');
+            WidgetService.updateWidget(vm.widgetId,widget)
+                .success(function(widget){
+                    $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + vm.pageid + '/widget');
+                })
+                .error(function(err){
+                    vm.error = "Widget could not be updated";
+                });
         }
 
 
         function deleteWidget(){
-            var status = WidgetService.deleteWidget(vm.widgetId);
-            if(status.success === "false")
-                vm.error = "Widget could not be deleted";
-            else
-                $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + vm.pageid + '/widget');
+            WidgetService.deleteWidget(vm.widgetId)
+                .success(function(widget){
+                    $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + vm.pageid + '/widget');
+                })
+                .error(function(err){
+                    vm.error = "Widget could not be deleted";
+                });
         }
 
         function navProfile(){
@@ -58,31 +76,20 @@
         function navWidgetChoose(){
             $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + vm.pageid + '/widget/new');
         }
-        /*vm.add = navPageNew;
-         vm.edit = navPageEdit;
-         vm.profile = navProfile;
-         vm.websiteList = navWebsites;
-         vm.widgets = navWidgets;
 
-         function navWebsites(){
-         $location.url('/user/' + vm.developerId + '/website');
-         }
+        function fileUpload(){
+            var widget = vm.widget;
+            var file = vm.file;
+            widget['widgetId'] = vm.widgetId;
 
-         function navPageNew(){
-         $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/new');
-         }
-
-         function navPageEdit(pageId){
-         $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + pageId);
-         }
-
-         function navProfile(){
-         $location.url('/user/' + vm.developerId);
-         }
-
-         function navWidgets(pageId){
-         $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page/' + pageId + '/widget');
-         }*/
+            WidgetService.fileUpload(widget,file)
+                .success(function(widget){
+                    navWidgets();
+                })
+                .error(function(err){
+                    vm.error = "File could not be uploaded";
+                });
+        }
     }
 
 })();

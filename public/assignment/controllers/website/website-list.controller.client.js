@@ -17,7 +17,15 @@
             vm.edit = navWebsiteEdit;
             vm.profile = navProfile;
             vm.pageList = navPages;
-            vm.websites = WebsiteService.findWebsitesByUser(vm.developerId);
+
+            var promise = WebsiteService.findWebsitesByUser(vm.developerId);
+            promise
+                .success(function(websites){
+                    vm.websites = websites;
+                })
+                .error(function(err){
+                    vm.error = 'Error while laoding websites'
+                });
         }
         init();
 

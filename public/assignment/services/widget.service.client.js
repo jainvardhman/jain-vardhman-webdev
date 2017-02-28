@@ -6,128 +6,57 @@
         .module("WebAppMaker")
         .factory('WidgetService', widgetService);
 
-    function widgetService(){
-        widgets = [
-            { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
-            { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-            { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-                "url": "http://lorempixel.com/400/200/"},
-            { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-            { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-            { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-                "url": "https://youtu.be/AM2Ivdi9c4E" },
-            { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-        ];
-
-        widgetTypes = [
-            {"type":"HEADER", "text": "Header"},
-            {"type":"LABEL", "text": "Label"},
-            {"type":"HTML", "text": "HTML"},
-            {"type":"TEXT", "text": "Text Input"},
-            {"type":"LINK", "text": "Link"},
-            {"type":"BUTTON", "text": "Button"},
-            {"type":"IMAGE", "text": "Image"},
-            {"type":"YOUTUBE", "text": "YouTube"},
-            {"type":"TABLE", "text": "Data Table"},
-            {"type":"REPEATER", "text": "Repeater"}
-        ];
-
-
-
+    function widgetService($http){
         var api = {
             "createWidget": createWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "getAllWidgetTypes" : getAllWidgetTypes
+            "getAllWidgetTypes" : getAllWidgetTypes,
+            "fileUpload" : fileUpload,
+            "updateWidgetsOrder" : updateWidgetsOrder
         };
         return api;
 
         function createWidget(pageId,widget){
-            var newWidget = {"_id": widget._id, "widgetType": widget.widgetType,
-                "pageId": pageId};
-            widgets.push(newWidget);
-            return angular.copy(newWidget);
-        }
-
-        function getNewWidgetByWidgetType(pageId,widgetOld,widgetNew){
-            if(widgetOld.widgetType === "HEADER"){
-                widgetOld.text = widgetNew.text;
-                widgetOld.size = widgetNew.size;
-            } else if(widgetOld.widgetType === "IMAGE"){
-                widgetOld.width = widgetNew.width;
-                widgetOld.url = widgetNew.url;
-            } else if(widgetOld.widgetType === "HTML"){
-                widgetOld.text = widgetNew.text;
-
-            } else if(widgetOld.widgetType === "YOUTUBE"){
-                widgetOld.width = widgetNew.width;
-                widgetOld.url = widgetNew.url;
-
-            } else {
-                widgetOld.text = widgetNew.text;
-            }
+            return $http.post('/api/page/' + pageId + '/widget',widget);
         }
 
         function getAllWidgetTypes(){
-            var retWidgetTypes = [];
-            for(wgs in widgetTypes){
-                var widgetType = widgetTypes[wgs];
-                retWidgetTypes.push(angular.copy(widgetType));
-            }
-            return retWidgetTypes;
+            return $http.get('/api/widgetTypes');
         }
 
         function findWidgetsByPageId(pageId){
-            var retWidgets = [];
-            for(wgs in widgets){
-                var widget = widgets[wgs];
-                if(widget.pageId === pageId){
-                    retWidgets.push(angular.copy(widget));
-                }
-            }
-            return retWidgets;
+            return $http.get('/api/page/' + pageId + '/widget');
         }
 
         function findWidgetById(widgetId){
-            for(wgs in widgets){
-                var widget = widgets[wgs];
-                if(widget._id === widgetId){
-                    return angular.copy(widget);
-                }
-            }
-            return null;
+            return $http.get('/api/widget/' + widgetId);
         }
 
         function updateWidget(widgetId,newWidget){
-            for(wgs in widgets){
-                var widget = widgets[wgs];
-                if(widget._id === widgetId){
-                    newWidget._id = widget._id;
-                    newWidget.pageId = widget.pageId;
-                    newWidget.widgetType = widget.widgetType;
-                    getNewWidgetByWidgetType(widget.pageId,widget,newWidget);
-                    return angular.copy(widget);
-                }
-            }
-            return null;
+            return $http.put('/api/widget/' + widgetId,newWidget);
         }
 
         function deleteWidget(widgetId){
-            var wgIndex = -1;
-            for(wgts in widgets){
-                var widget = widgets[wgts];
-                if(widget._id === widgetId){
-                    wgIndex = wgts;
-                    break;
-                }
-            }
-            if(wgIndex != -1){
-                widgets.splice(wgIndex,1);
-                return {success : "true"};
-            }
-            return {success : "false"};
+            return $http.delete('/api/widget/' + widgetId);
+        }
+
+        function fileUpload(widget,file){
+            var fd = new FormData();
+            fd.append('file', file);
+            fd.append('widgetId', widget['widgetId']);
+            fd.append('width', widget['width']);
+            fd.append('url', widget['url']);
+            return $http.post("/api/upload",fd,{
+                transformRequest: angular.identity,
+                headers : {'Content-Type' : undefined}
+            });
+        }
+
+        function updateWidgetsOrder(pageId,startIndex,endIndex){
+            return $http.put('/api/page/' + pageId + '/widget?startIndex=' + startIndex + '&endIndex=' + endIndex);
         }
     }
 })();

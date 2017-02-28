@@ -18,7 +18,13 @@
             vm.add = navPageNew;
             vm.profile = navProfile;
             vm.pageList = navPages;
-            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+            PageService.findPagesByWebsiteId(vm.websiteId)
+                .success(function(pages){
+                    vm.pages = pages;
+                })
+                .error(function(err){
+                    vm.error = 'Pages could not be loaded';
+                });;
         }
         init();
 
@@ -36,11 +42,13 @@
 
         function createPage(page){
             page._id = (new Date).getTime().toString();
-            var newPage = PageService.createPage(vm.websiteId,page);
-            if(newPage == null)
-                vm.error = "Page could not be created";
-            else
-                $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');
+            PageService.createPage(vm.websiteId,page)
+                .success(function(newWebsite){
+                    $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');
+                })
+                .error(function(err){
+                    vm.error = "Page could not be created";
+                });
         }
 
         function navWebsiteEdit(pageId){
