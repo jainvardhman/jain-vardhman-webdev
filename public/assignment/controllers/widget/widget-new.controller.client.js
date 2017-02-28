@@ -9,12 +9,17 @@
 
     function widgetNewController($routeParams,WidgetService,$location){
         var vm = this;
+        vm.developerId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageid = $routeParams['pid'];
+        vm.widgetTypes = [];
+        vm.createWidget = createWidget;
+        vm.widgetList = navWidgets;
+        vm.widgetNew = navWidgetNew;
+        vm.edit = navWidgetEdit;
+        vm.profile = navProfile;
 
         function init(){
-            vm.developerId = $routeParams['uid'];
-            vm.websiteId = $routeParams['wid'];
-            vm.pageid = $routeParams['pid'];
-            vm.widgetTypes = [];
             var promise = WidgetService.getAllWidgetTypes();
                 promise.success(function(widgetTypes){
                     vm.widgetTypes = widgetTypes;
@@ -22,11 +27,6 @@
                 .error(function(err){
                     vm.error = 'Widget types could not be loaded';
                 });
-            vm.createWidget = createWidget;
-            vm.widgetList = navWidgets;
-            vm.widgetNew = navWidgetNew;
-            vm.edit = navWidgetEdit;
-            vm.profile = navProfile;
         }
 
         init();

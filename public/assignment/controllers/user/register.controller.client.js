@@ -9,10 +9,10 @@
 
     function registerController(UserService,$location){
         var vm = this;
+        vm.register = register;
+        vm.cancel = navLogin;
 
         function init(){
-            vm.register = register;
-            vm.cancel = navLogin;
         }
 
         init();

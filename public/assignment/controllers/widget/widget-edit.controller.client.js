@@ -9,12 +9,19 @@
 
     function widgetEditController($routeParams,WidgetService,$location,$http){
         var vm = this;
+        vm.developerId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageid = $routeParams['pid'];
+        vm.widgetId = $routeParams['wgid'];
+        vm.updateWidget = updateWidget;
+        vm.deleteWidget = deleteWidget;
+        vm.getEditorTemplateUrl = getEditorTemplateUrl;
+        vm.profile = navProfile;
+        vm.widgetList = navWidgets;
+        vm.widgetChooser = navWidgetChoose;
+        vm.upload = fileUpload;
 
         function init() {
-            vm.developerId = $routeParams['uid'];
-            vm.websiteId = $routeParams['wid'];
-            vm.pageid = $routeParams['pid'];
-            vm.widgetId = $routeParams['wgid'];
             WidgetService.findWidgetsByPageId(vm.pageid)
                 .success(function(widgets){
                     vm.widgets = widgets;
@@ -22,12 +29,6 @@
                 .error(function(err){
                     vm.error = 'Could not load widgets';
                 });
-            vm.updateWidget = updateWidget;
-            vm.deleteWidget = deleteWidget;
-            vm.getEditorTemplateUrl = getEditorTemplateUrl;
-            vm.profile = navProfile;
-            vm.widgetList = navWidgets;
-            vm.widgetChooser = navWidgetChoose;
             WidgetService.findWidgetById(vm.widgetId)
                 .success(function(widget){
                     vm.widget = widget;
@@ -35,8 +36,6 @@
                 .error(function(err){
                     vm.error = 'Could not load widget';
                 });
-
-            vm.upload = fileUpload;
         }
         init();
 

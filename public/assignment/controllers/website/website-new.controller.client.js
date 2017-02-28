@@ -9,15 +9,15 @@
 
     function websiteNewController($routeParams,WebsiteService,$location){
         var vm = this;
+        vm.developerId = $routeParams['uid'];
+        vm.createWebsite = createWebsite;
+        vm.edit = navWebsiteEdit;
+        vm.add = navWebsiteNew;
+        vm.profile = navProfile;
+        vm.websiteList = navWebsites;
+        vm.pageList = navPages;
 
         function init(){
-            vm.developerId = $routeParams['uid'];
-            vm.createWebsite = createWebsite;
-            vm.edit = navWebsiteEdit;
-            vm.add = navWebsiteNew;
-            vm.profile = navProfile;
-            vm.websiteList = navWebsites;
-            vm.pageList = navPages;
             WebsiteService.findWebsitesByUser(vm.developerId)
                 .success(function(websites){
                     vm.websites = websites;

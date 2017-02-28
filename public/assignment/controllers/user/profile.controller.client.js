@@ -9,15 +9,13 @@
 
     function profileController($routeParams,UserService,$location){
         var vm = this;
-
+        vm.userId = $routeParams['uid'];
+        vm.update = update;
+        vm.websites = navWebsites;
+        vm.logout = navLogin;
+        vm.profile = navProfile;
 
         function init(){
-            vm.userId = $routeParams['uid'];
-            vm.update = update;
-            vm.websites = navWebsites;
-            vm.logout = navLogin;
-            vm.profile = navProfile;
-
             var promise = UserService.findUserById(vm.userId);
             promise
                 .success(function(user){

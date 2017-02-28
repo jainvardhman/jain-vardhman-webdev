@@ -9,12 +9,19 @@
 
     function widgetListController($sce,$routeParams,WidgetService,$location){
         var vm = this;
-
+        vm.developerId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.pageid = $routeParams['pid'];
+        vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+        vm.getTrustedHtml = getTrustedHtml;
+        vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
+        vm.profile = navProfile;
+        vm.pageList = navPages;
+        vm.widgetNew = navWidgetNew;
+        vm.edit = navWidgetEdit;
+        vm.updateOrder = updateOrder;
 
         function init(){
-            vm.developerId = $routeParams['uid'];
-            vm.websiteId = $routeParams['wid'];
-            vm.pageid = $routeParams['pid'];
             WidgetService.findWidgetsByPageId(vm.pageid)
                 .success(function(widgets){
                     vm.widgets = widgets;
@@ -22,14 +29,6 @@
                 .error(function(err){
                     vm.error = 'Widgets could not be loaded';
                 });
-            vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-            vm.getTrustedHtml = getTrustedHtml;
-            vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
-            vm.profile = navProfile;
-            vm.pageList = navPages;
-            vm.widgetNew = navWidgetNew;
-            vm.edit = navWidgetEdit;
-            vm.updateOrder = updateOrder;
         }
 
         init();

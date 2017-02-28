@@ -9,15 +9,15 @@
 
     function pageNewController($routeParams,PageService,$location){
         var vm = this;
+        vm.developerId = $routeParams['uid'];
+        vm.websiteId = $routeParams['wid'];
+        vm.createPage = createPage;
+        vm.edit = navPageEdit;
+        vm.add = navPageNew;
+        vm.profile = navProfile;
+        vm.pageList = navPages;
 
         function init(){
-            vm.developerId = $routeParams['uid'];
-            vm.websiteId = $routeParams['wid'];
-            vm.createPage = createPage;
-            vm.edit = navPageEdit;
-            vm.add = navPageNew;
-            vm.profile = navProfile;
-            vm.pageList = navPages;
             PageService.findPagesByWebsiteId(vm.websiteId)
                 .success(function(pages){
                     vm.pages = pages;
