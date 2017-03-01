@@ -33,7 +33,7 @@
         }
 
         function deleteWebsite(websiteId){
-            return $http.delete('/api/website/' + websiteId,newWebsite);
+            return $http.delete('/api/website/' + websiteId);
         }
     }
 })();
