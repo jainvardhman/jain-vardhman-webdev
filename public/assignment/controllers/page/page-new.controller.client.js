@@ -41,7 +41,7 @@
         }
 
         function createPage(page){
-            page._id = (new Date).getTime().toString();
+            //page._id = (new Date).getTime().toString();
             PageService.createPage(vm.websiteId,page)
                 .success(function(newWebsite){
                     $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId + '/page');

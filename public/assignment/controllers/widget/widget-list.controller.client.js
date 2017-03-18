@@ -24,7 +24,7 @@
         function init(){
             WidgetService.findWidgetsByPageId(vm.pageid)
                 .success(function(widgets){
-                    vm.widgets = widgets;
+                    vm.widgets = widgets.sort(sortComparator);
                 })
                 .error(function(err){
                     vm.error = 'Widgets could not be loaded';
@@ -68,12 +68,17 @@
 
         function updateOrder(startIndex,endIndex){
             WidgetService.updateWidgetsOrder(vm.pageid,startIndex,endIndex)
-                .success(function(status){
+                .success(function(widgets){
+                    vm.widgets = widgets.sort(sortComparator);
                     vm.message = "Widgets order successfully updated";
                 })
                 .error(function(err){
                     vm.error= "Widgets order could not be updated";
                 });
+        }
+
+        function sortComparator(a,b) {
+            return parseInt(a.order) - parseInt(b.order);
         }
     }
 

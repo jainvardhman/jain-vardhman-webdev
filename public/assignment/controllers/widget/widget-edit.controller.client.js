@@ -20,6 +20,7 @@
         vm.widgetList = navWidgets;
         vm.widgetChooser = navWidgetChoose;
         vm.upload = fileUpload;
+        vm.searchFlickr = searchFlickr;
 
         function init() {
             WidgetService.findWidgetsByPageId(vm.pageid)
@@ -88,6 +89,11 @@
                 .error(function(err){
                     vm.error = "File could not be uploaded";
                 });
+        }
+
+        function searchFlickr(){
+            $location.url('/user/' + vm.developerId + '/website/' + vm.websiteId
+                + '/page/' + vm.pageid + '/widget/' + vm.widgetId + '/search');
         }
     }
 

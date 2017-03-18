@@ -45,8 +45,8 @@
 
         function createWidget(widgetType){
             var widget = {};
-            widget._id = (new Date).getTime().toString();
-            widget.widgetType = widgetType;
+            //widget._id = (new Date).getTime().toString();
+            widget.type = widgetType;
             widget.pageId = vm.pageid;
             WidgetService.createWidget(vm.pageid,widget)
                 .success(function(widget){

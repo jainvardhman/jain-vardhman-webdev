@@ -18,15 +18,15 @@
         init();
 
         function register(newUser){
-            newUser._id = (new Date).getTime.toString();
+            //newUser._id = (new Date).getTime.toString();
             var promise = UserService.createUser(newUser);
             promise
-                .success(function(user){
+                .then(function(user){
                     $location.url('/user/' + user._id);
-                })
-                .err(function(err){
+                },
+                function(err){
                     vm.error = "User could not be created";
-                });
+                })
         }
 
         function navLogin(){

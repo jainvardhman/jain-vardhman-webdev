@@ -42,7 +42,7 @@
 
 
         function createWebsite(website){
-            website._id = (new Date).getTime().toString();
+            //website._id = (new Date).getTime().toString();
             WebsiteService.createWebsite(vm.developerId,website)
                 .success(function(newWebsite){
                     $location.url('/user/' + vm.developerId + '/website');

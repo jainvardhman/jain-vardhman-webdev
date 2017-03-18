@@ -9,7 +9,7 @@
                placeholder="Name"
                id ="name"
                name ="name"
-               ng-model="model.widget.widgetType"/>
+               ng-model="model.widget.type"/>
     </div>
 
     <div class="input-group webdev-top-bottom-margin webdev-full-width">
@@ -51,6 +51,7 @@
                 name="fileUpload"
                 jga-upload="model.file"/>
     </div>
+    <button ng-click="model.searchFlickr()" class="btn btn-info  btn-block">Search Flickr</button>
     <input name="widgetId"
            value="{{model.widget._id}}"
            style="display: none"/>
