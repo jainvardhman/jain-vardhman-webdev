@@ -51,6 +51,7 @@ module.exports = function(app,model) {
                                 res.status(200).json(widget);
                             },
                             function(err){
+                                console.log(err);
                                 res.sendStatus(500).send(err);
                             });
                 },

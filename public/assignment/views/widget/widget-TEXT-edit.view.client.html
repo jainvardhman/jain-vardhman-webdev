@@ -1,0 +1,51 @@
+<form>
+    <div class="input-group webdev-top-bottom-margin webdev-full-width">
+        <span class="input-group-addon webdev-label-fixed-width"
+              id="name-group">
+             Text
+        </span>
+        <input type="text"
+               class="form-control"
+               placeholder="Text"
+               id ="text"
+               name ="text"
+               ng-model="model.widget.text"/>
+    </div>
+
+    <div class="input-group webdev-top-bottom-margin webdev-full-width">
+        <span class="input-group-addon webdev-label-fixed-width"
+              id="url-group">
+             Rows
+        </span>
+        <input type="number"
+               class="form-control"
+               placeholder="##"
+               id="rows"
+               name="rows"
+               ng-model="model.widget.rows"/>
+    </div>
+
+
+    <div class="input-group webdev-top-bottom-margin webdev-full-width">
+        <span class="input-group-addon webdev-label-fixed-width"
+              id="width-group">
+             Placeholder
+        </span>
+        <input class="form-control"
+               id="placeholder"
+               name="placeholder"
+               ng-model="model.widget.placeholder"/>
+    </div>
+
+    <div class="input-group webdev-top-bottom-margin webdev-full-width">
+        <span class="input-group-addon webdev-label-fixed-width"
+              id="file-upload-group">
+             Formatted
+        </span>
+        <input type="checkbox"
+                class="form-control"
+               id="formatted"
+               name="formatted"
+               ng-model="model.widget.formatted"/>
+    </div>
+</form>

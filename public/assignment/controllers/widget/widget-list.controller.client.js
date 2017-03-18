@@ -35,6 +35,7 @@
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'views/widget/widget-'+widgetType+'.view.client.html';
+            console.log(url);
             return url;
         }
 
