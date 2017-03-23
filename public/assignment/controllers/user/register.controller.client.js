@@ -22,7 +22,8 @@
             var promise = UserService.createUser(newUser);
             promise
                 .then(function(user){
-                    $location.url('/user/' + user._id);
+                    console.log(user.data._id);
+                    $location.url('/user/' + user.data._id);
                 },
                 function(err){
                     vm.error = "User could not be created";
