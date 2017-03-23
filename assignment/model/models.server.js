@@ -13,9 +13,11 @@ module.exports = function(app) {
     }
 
     var mongoose = require('mongoose');
-    mongoose.createConnection(connectionString);
+    //mongoose.createConnection(connectionString);
 
-    db.on('error', console.error.bind(console, 'Error in mongodb connection'));
+    //db.on('error', console.error.bind(console, 'Error in mongodb connection'));
+
+    mongoose.connect(connectionString);
 
     var userModel = require("./user/user.model.server")();
     var websiteModel = require("./website/website.model.server")();
