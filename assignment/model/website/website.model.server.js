@@ -82,8 +82,6 @@ module.exports = function() {
 
     function deleteWebsite(websiteId){
         var deferred = q.defer();
-        //UserModel.update({"_id" : website["_user"]}, {$pull : {"websites" : websiteId}},
-        //    function(err,user){
         WebsiteModel.remove({"_id" : websiteId},
             function(err,website){
                 if(err){
@@ -92,8 +90,6 @@ module.exports = function() {
                     deferred.resolve(website);
                 }
             });
-        //deferred.resolve(website);
-//           });
 
         return deferred.promise;
     }
